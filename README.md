@@ -56,7 +56,6 @@ Use each one with its own name. `Sa_avg` is not the same as the single-period Sa
 * `urm_fragility.py`: the code
 * `data/`: the PGA fragility parameters from the paper (Table 13)
 * `notebooks/fragility_curves.ipynb`: worked example
-* `validation/`: script that checks the method against the paper's PGA table
 
 For PGA, the parameters come straight from the paper. For the Sa measures, the paper gives a regression model instead, and `urm_fragility.py` calculates the parameters from it.
 
