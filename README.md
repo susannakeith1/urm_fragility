@@ -60,25 +60,10 @@ Use each one with its own name. `Sa_avg` is not the same as the single-period Sa
 
 For PGA, the parameters come straight from the paper. For the Sa measures, the paper gives a regression model instead, and `urm_fragility.py` calculates the parameters from it.
 
-
 ## Validation
 
-The paper prints fragility parameters for PGA but not for the Sa measures. The Sa parameters are calculated from the paper's regression model (Table 11).
+The paper prints fragility parameters (`mu` and `sigma`) for PGA, but not for the Sa measures. For Sa it gives a regression model (Table 11), and the parameters in this code are calculated from that model.
 
-To check that this calculation is correct, `validation/check_regression_vs_tables.py` runs the **same method on PGA**, where the paper's printed answers (Table 13) are known, and compares the two.
+To check the method, the same regression equations were applied to **PGA**, where the paper's printed parameters (Table 13) are known, and the results were compared with the table. This was done for all 45 building classes (9 construction-age classes × 5 storey classes). The largest differences were about 0.004 for `mu` and 0.001 for `sigma`. The small differences come from the paper rounding its regression coefficients to 3 decimal places.
 
-To run it, from the main folder:
-
-```
-python validation/check_regression_vs_tables.py
-```
-
-Expected output:
-
-```
-PGA   max |mu diff| = 0.0035   max |sigma diff| = 0.0006
-```
-
-This means the method reproduces all 45 PGA rows of Table 13 to within about 0.004 for `mu` and 0.001 for `sigma`. The small differences are because the paper rounds its regression coefficients to 3 decimal places.
-
-**What this does and does not show:** it confirms the method and the code are correct, which also supports the Sa results because they use exactly the same code. The paper has no printed Sa parameters, so the Sa results cannot be compared against a table directly.
+This confirms the method (the regression equations, the age and storey variables, the unit conversion and the log base 10 convention). The Sa results use the same equations with the Sa coefficients, so they are supported by this check. However, the paper has no printed Sa parameters, so the Sa results could not be compared against a table directly.
