@@ -46,7 +46,7 @@ Use each one with its own name. `Sa_avg` is not the same as the single-period Sa
 
 ## Things to watch out for
 
-* Intensity values must be in **g**, not m/s² or cm/s².
+* Intensity values must be in **g**.
 * 5 or more storeys count as 5.
 * Results are the probability of damage **given** a shaking level. They are not annual probabilities.
 * The curves come from the 2012 Emilia earthquakes (northern Italy) and URM buildings only.
